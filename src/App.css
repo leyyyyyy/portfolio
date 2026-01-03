@@ -1,0 +1,130 @@
+html, body, #root, .App {
+    height: 100%;
+    margin: 0;
+}
+
+body, .App {
+    background: linear-gradient(to bottom, #000523, #000318);
+    font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", cursive;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    position: absolute;
+    color: #ffffff;
+    top: 32px;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: 0;
+}
+
+/* MENU */
+.menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.6s ease;
+}
+
+.menu.shift-left {
+    transform: translate(-180%, -50%);
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.text-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 22px;
+    cursor: pointer;
+    text-align: left;
+    outline: 0;
+    border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  /* font-size: 1em; */
+  /* background-color: #1a1a1a; */
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.activeButton{
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.text-button:hover {
+  border-color: #646cff;
+}
+
+/* Content */
+.content {
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    transform: translateY(-50%);
+    width: 45%;
+    opacity: 0;
+    /* transition: opacity .3s ease 5s; */
+}
+
+.content.show {
+    
+    opacity: 1;
+    transition: opacity .3s ease .2s;
+    
+    
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+
+    .header {
+        font-size: 26px;
+        top: 20px;
+    }
+
+    .menu {
+        width: 100%;
+    }
+
+    .menu.shift-left {
+        transform: translate(-50%, -350%);
+    }
+
+    .text-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        text-align: center;
+        padding: 0 16px;
+    }
+
+    .text-button {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .content {
+        position: relative;
+        top: 20%;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        /* margin-top: 28px; */
+    }
+}
