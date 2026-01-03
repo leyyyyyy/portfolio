@@ -75,15 +75,12 @@ body, .App {
     transform: translateY(-50%);
     width: 45%;
     opacity: 0;
-    /* transition: opacity .3s ease 5s; */
+    /* transition: opacity 0.3s ease; */
 }
 
 .content.show {
-    
     opacity: 1;
-    transition: opacity .3s ease .2s;
-    
-    
+    transition: opacity 0.3s ease;
 }
 
 /* MOBILE */
@@ -97,34 +94,72 @@ body, .App {
         top: 20px;
     }
 
+    /* Menu base: centered vertically with stacked buttons */
     .menu {
         width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: top 0.6s ease, transform 0.6s ease;
     }
 
+    /* When clicked: move menu to top */
     .menu.shift-left {
-        transform: translate(-50%, -350%);
+        top: 80px; /* near top */
+        transform: translate(-50%, 0%);
     }
 
+    /* Container base: stacked grid */
     .text-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        grid-template-columns: 1fr; /* stacked */
+        grid-template-rows: repeat(4, auto);
+        gap: 18px;
         text-align: center;
         padding: 0 16px;
+        transition: all 0.6s ease;
     }
 
+    /* Animate to horizontal row when menu is shifted */
+    .menu.shift-left .text-container {
+        grid-template-columns: repeat(4, 1fr); /* row layout */
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    /* Button styling with transform animation */
     .text-button {
         font-size: 18px;
+        padding: 20px 0;
         text-align: center;
+        transition: transform 0.6s ease, opacity 0.6s ease;
+        opacity: 1;
     }
 
+    /* Optional: stagger effect for a more dynamic feel */
+    .menu.shift-left .text-button:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+    .menu.shift-left .text-button:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+    .menu.shift-left .text-button:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+    .menu.shift-left .text-button:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+
+    /* Content adjustments */
     .content {
         position: relative;
-        top: 20%;
+        top: 30%;
         right: auto;
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
-        /* margin-top: 28px; */
+        transition: all 0.6s ease;
     }
 }
+
+
